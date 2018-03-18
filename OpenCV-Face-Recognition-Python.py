@@ -27,7 +27,6 @@ def detect_face(img, image_name):
     (x, y, w, h) = faces[0]
     cv2.imshow(image_name , cv2.resize(gray[y:y+h,x:x+w], (200, 200)))
     cv2.waitKey(100)
-    input("Press Enter to continue...")
     # resize the faces
     resized_face = cv2.resize(gray[y:y+h,x:x+w], (200, 200))
 
@@ -177,7 +176,7 @@ def main():
 
     # Para o nosso exp, use 25 ou 5
     numberOfTrainingImages = 25
-    
+
     numberOfTestImages = 5
     faces, labels, arrayTest = getPreparedData(numberOfTrainingImages, numberOfTestImages)
     face_recognizer.train(faces, np.array(labels))
