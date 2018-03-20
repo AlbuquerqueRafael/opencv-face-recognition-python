@@ -12,30 +12,26 @@ import sys
 
 
 #there is no label 0 in our training data so subject name for index/label 0 is empty
-subjects = ["", "Bolsomito", "Seu Madruga", "Idris Elba"]
+subjects = ["", "Jeffrey", "Seu Madruga"]
 results = {}
 results["LBPH"] = {}
 results["EigenFace"] = {}
 results["FisherFace"] = {}
 
-results["LBPH"]["Bolsomito"] = {}
-results["EigenFace"]["Bolsomito"] = {}
-results["FisherFace"]["Bolsomito"] = {}
+results["LBPH"]["Jeffrey"] = {}
+results["EigenFace"]["Jeffrey"] = {}
+results["FisherFace"]["Jeffrey"] = {}
 
 results["LBPH"]["Seu Madruga"] = {}
 results["EigenFace"]["Seu Madruga"] = {}
 results["FisherFace"]["Seu Madruga"] = {}
 
-results["LBPH"]["Idris Elba"] = {}
-results["EigenFace"]["Idris Elba"] = {}
-results["FisherFace"]["Idris Elba"] = {}
-
-results["LBPH"]["Bolsomito"]["5"] = []
-results["LBPH"]["Bolsomito"]["20"] = []
-results["EigenFace"]["Bolsomito"]["5"] = []
-results["EigenFace"]["Bolsomito"]["20"] = []
-results["FisherFace"]["Bolsomito"]["5"] = []
-results["FisherFace"]["Bolsomito"]["20"] = []
+results["LBPH"]["Jeffrey"]["5"] = []
+results["LBPH"]["Jeffrey"]["20"] = []
+results["EigenFace"]["Jeffrey"]["5"] = []
+results["EigenFace"]["Jeffrey"]["20"] = []
+results["FisherFace"]["Jeffrey"]["5"] = []
+results["FisherFace"]["Jeffrey"]["20"] = []
 
 results["LBPH"]["Seu Madruga"]["5"] = []
 results["LBPH"]["Seu Madruga"]["20"] = []
@@ -44,12 +40,7 @@ results["EigenFace"]["Seu Madruga"]["20"] = []
 results["FisherFace"]["Seu Madruga"]["5"] = []
 results["FisherFace"]["Seu Madruga"]["20"] = []
 
-results["LBPH"]["Idris Elba"]["5"] = []
-results["LBPH"]["Idris Elba"]["20"] = []
-results["EigenFace"]["Idris Elba"]["5"] = []
-results["EigenFace"]["Idris Elba"]["20"] = []
-results["FisherFace"]["Idris Elba"]["5"] = []
-results["FisherFace"]["Idris Elba"]["20"] = []
+
 
 
 #function to detect face using OpenCV
@@ -200,7 +191,7 @@ def accuracy(person_name, arrayTest, face_recognizer, correct_predictions, recog
     for image_name in arrayTest:
         directory = ""
 
-        if (person_name == "Bolsomito"):
+        if (person_name == "Jeffrey"):
             directory = "s1"
         elif (person_name == "Seu Madruga"):
             directory = "s2"
@@ -266,7 +257,7 @@ def run_experiment():
                 recognizer = face_recognizers[face_recognizer]
                 recognizer.train(faces, np.array(labels))
                 for subject in subjects:
-                    correct_predictions = {"Bolsomito": 0, "Seu Madruga": 0, "Idris Elba": 0}
+                    correct_predictions = {"Seu Madruga": 0, "Jeffrey": 0}
                     if len(subject) != 0:
                         print ("Levels being used: ")
                         print ("Recognizer: %s" % face_recognizer)
