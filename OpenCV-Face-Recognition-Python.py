@@ -159,7 +159,7 @@ def draw_text(img, text, x, y):
     cv2.putText(img, text, (x, y), cv2.FONT_HERSHEY_PLAIN, (x+y)/100.0, (255, 0, 255), 5)
 
 
-def predict(test_img, person_name, face_recognizer, demo=False, correct_predictions=None):
+def predict(test_img, person_name, face_recognizer, correct_predictions, demo=False):
     if test_img is None: return
 
     #make a copy of the image as we don't want to chang original image
@@ -226,10 +226,9 @@ def accuracy(person_name, arrayTest, face_recognizer, correct_predictions, recog
 
 def defineTestImagesArray(numberOfTestImages, repet):
     #Set the seed for the experiment
-    if (repet == 0):
-        random.seed(1)
-    else:
-        random.seed(20)
+    seeds = [1,20,30,45,9]
+    random.seed(seeds[repet])
+
     numberOfImages = 30
     arrayTest = []
 
@@ -312,4 +311,4 @@ if len(sys.argv) == 2:
     elif param == "demo":
         run_demo()
     else:
-        print "Invalid parameter. Use <experiment> or <demo>"
+        print ("Invalid parameter. Use <experiment> or <demo>")
